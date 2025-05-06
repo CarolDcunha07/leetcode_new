@@ -1,22 +1,15 @@
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        alphanum=''
-        for ch in s:
-            if ch.isalnum():
-                alphanum+=ch.lower()
-        
-        l=0
-        h=len(alphanum)-1
-
-        # def pal(l,h,alphanum):
-        #     if l>=h:
-        #         return
-        #     if alphanum[l]!=alphanum[h]:
-        #         return False
-        #     pal(l+1,h-1)
-        if alphanum==alphanum[::-1]:
+        s=s.lower()
+        s=''.join(x for x in s if x.isalnum())
+        if len(s)<1:
             return True
-        else:
+        return Solution.rec(0,s)
+
+    @staticmethod 
+    def rec(i,s):
+        if i>=len(s)//2:
+            return True
+        if s[i]!=s[len(s)-i-1]:
             return False
-                
-        
+        return Solution.rec(i+1,s)
