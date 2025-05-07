@@ -3,8 +3,13 @@ class Solution:
         nums=sorted(nums)
 
         miss=0
-
-        for i in range(len(nums)+1):
-            if i not in nums:
+        i=0
+        print(nums)
+        while i<len(nums):
+            if nums[i]==miss:
+                i+=1
+                miss+=1
+            else:
                 return i
+        return i
         
